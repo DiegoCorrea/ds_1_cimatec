@@ -3,6 +3,7 @@ package Conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,6 +44,17 @@ public class ConexaoPrincipal {
             if (CON != null && stmt != null) {
                 closeConnection(CON);
                 stmt.close();
+            }
+        } catch (SQLException e) {
+          Logger.getLogger(ConexaoPrincipal.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public static void closeConnection(Connection CON, PreparedStatement stmt, ResultSet result) {
+        try {
+            if (CON != null && stmt != null) {
+                closeConnection(CON, stmt);
+                result.close();
             }
         } catch (SQLException e) {
           Logger.getLogger(ConexaoPrincipal.class.getName()).log(Level.SEVERE, null, e);

@@ -42,4 +42,10 @@ public class Produto {
     public void setQtd(int qtd) {
         this.qtd = qtd;
     }        
+    
+    public void imprimirDados() {
+        System.out.println("Descricao: " + this.getDescricao());
+        System.out.println("preco: " + this.getPreco());
+        System.out.println("Quantidade: " + this.getQtd());
+    }
 }
